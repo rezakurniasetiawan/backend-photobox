@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\mitransController;
+use App\Http\Controllers\API\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/qris', [mitransController::class, 'createQrisTransaction'])->name('payment.qris');
+Route::get('/status/{id}', [mitransController::class, 'getStatus'])->name('payment.status');
